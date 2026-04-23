@@ -1,25 +1,26 @@
 using UnityEngine;
 
+//script for heal pickup
 public class HeartPickUp : MonoBehaviour
 {
-    private SpawnCollectibles heart;
-    public AudioClip healSound;
+    private SpawnCollectibles heartSpawner;
+    [SerializeField] private AudioClip healSound;
 
     private void Start()
     {
-        heart = GameObject.Find("CollectiblesSpawner").GetComponent<SpawnCollectibles>();
+        heartSpawner = GameObject.FindGameObjectWithTag("CollectiblesSpawner").GetComponent<SpawnCollectibles>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("Player"))//if picked by player
         {
-            HealthComponent playerHealth =  other.gameObject.GetComponent<HealthComponent>();
-            if (playerHealth != null)
+            HealthComponent playerHealth = other.gameObject.GetComponent<HealthComponent>();//get the health component
+            if (playerHealth != null && playerHealth.health < playerHealth.maxHealth)
             {
-                SoundsManager.Instance.PlaySFX(healSound);
-                playerHealth.Heal();
-                heart.SpawnHeals();
+                SoundsManager.Instance.PlaySFX(healSound,0.5f);
+                playerHealth.Heal();//heal player
+                heartSpawner.SpawnHeals();//spawn another heal 
                 Destroy(gameObject);
             }
         }

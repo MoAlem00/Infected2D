@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3895470869162283842}
   - component: {fileID: 4571757730868619039}
   - component: {fileID: 3269239107128717262}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tree-trunk_2_grass_Dark-Green_0
-  m_TagString: Untagged
+  m_TagString: Trees
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 464819837
-  m_SortingLayer: 9
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_Sprite: {fileID: 5488124553726607956, guid: d9ce48b218954d947b3aa9d7e92635c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

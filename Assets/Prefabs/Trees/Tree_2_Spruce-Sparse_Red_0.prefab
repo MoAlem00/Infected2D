@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7369393347947887628}
   - component: {fileID: 4164411552309599298}
   - component: {fileID: 7330212781681297943}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tree_2_Spruce-Sparse_Red_0
-  m_TagString: Untagged
+  m_TagString: Trees
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 464819837
-  m_SortingLayer: 8
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_Sprite: {fileID: -5991488192780750522, guid: c8d39f4b4ba167c4c88a09711c65a6df, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

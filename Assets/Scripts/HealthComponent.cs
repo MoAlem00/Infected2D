@@ -1,40 +1,51 @@
 using UnityEngine;
 
+//health script used for both player and enemy
 public class HealthComponent : MonoBehaviour
 {
     public int health = 100;
-    public int maxHealth = 100;
+    
+    [SerializeField] public int maxHealth = 100;
+    public int maxUpgradeHealth = 500;
     private int heal = 25;
-    private UIManager uiManager;
 
     private void Start()
     {
-        uiManager = GameObject.Find("HUD").GetComponent<UIManager>();
         health = maxHealth;
-        if (CompareTag("Player"))
+        if (CompareTag("Player"))//show player health
         {
-            uiManager.playerHealthSlider.maxValue = maxHealth;
-            uiManager.playerHealthSlider.value = health;
+            UIManager.Instance.playerHealthSlider.maxValue = maxHealth;
+            UIManager.Instance.playerHealthSlider.value = health;
+            UIManager.Instance.SetHealthAmountText(health);
         }
     }
 
     public void TakeDamage(int dmg)
     {
         health = Mathf.Clamp(health - dmg, 0, maxHealth);
-        if(CompareTag("Player"))
-            uiManager.SetPlayerHealth(health);
-    }
-
-    public void ResetHealth()
-    {
-        health = maxHealth;
+        if (CompareTag("Player")) //update player health bar when taking damage
+        {
+            UIManager.Instance.SetPlayerHealth(health);
+            UIManager.Instance.SetHealthAmountText(health);
+        }
+            
     }
 
     public void Heal()
     {
         health = Mathf.Clamp(health + heal, 0, maxHealth);
-        if(CompareTag("Player"))
-            uiManager.SetPlayerHealth(health);
+        if (CompareTag("Player")) //update player health bar when healing
+        {
+            UIManager.Instance.SetPlayerHealth(health);
+            UIManager.Instance.SetHealthAmountText(health);
+        }
+            
+    }
+
+    public void UpgradeMaxHealth(int upgradeAmount)
+    {
+        maxHealth = Mathf.Clamp(maxHealth + upgradeAmount, 0, maxUpgradeHealth);
+        UIManager.Instance.playerHealthSlider.maxValue = maxHealth;
     }
     
 }

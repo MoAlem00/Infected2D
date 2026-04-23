@@ -14,6 +14,20 @@ TagManager:
   - LosePanel
   - ShootEffect
   - Metal
+  - Trees
+  - FireRate
+  - Speed
+  - Invincible
+  - Damage
+  - Weapon
+  - MultiShot
+  - Boss
+  - CollectiblesSpawner
+  - HUD
+  - Barrel
+  - Bullet
+  - CoinsManager
+  - Axe
   layers:
   - Default
   - TransparentFX
@@ -26,10 +40,10 @@ TagManager:
   - Axe
   - Objects
   - Collectibles
-  - 
-  - 
-  - 
-  - 
+  - Trees
+  - WireFences
+  - Enemies
+  - Explosions
   - 
   - 
   - 
@@ -57,11 +71,14 @@ TagManager:
   - name: Grass
     uniqueID: 3100414831
     locked: 0
+  - name: Pickable
+    uniqueID: 122093331
+    locked: 0
   - name: Objects
     uniqueID: 1980008765
     locked: 0
-  - name: Pickable
-    uniqueID: 122093331
+  - name: BackWalls
+    uniqueID: 1859015997
     locked: 0
   - name: Buildings
     uniqueID: 237073709
@@ -83,6 +100,9 @@ TagManager:
     locked: 0
   - name: Crosshair
     uniqueID: 2518125719
+    locked: 0
+  - name: Effects
+    uniqueID: 437636007
     locked: 0
   m_RenderingLayers:
   - Default

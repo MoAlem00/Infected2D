@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2690749531493206557}
   - component: {fileID: 1518619586104608519}
   - component: {fileID: 3192291129423191848}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tree_6_Big-pine_Dark-Green_0
-  m_TagString: Untagged
+  m_TagString: Trees
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 464819837
-  m_SortingLayer: 8
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_Sprite: {fileID: 9172751923423468261, guid: eeac275d19ff8464eb1379d647c1450e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

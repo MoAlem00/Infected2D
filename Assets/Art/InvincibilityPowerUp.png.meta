@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 5f61e24b7ebd6554f86ec0e0bb5fe75c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4758286036653804185
+    second: InvincibilityPowerUp_0
+  - first:
+      213: -139427347949625806
+    second: InvincibilityPowerUp_1
+  - first:
+      213: -6947369580274863447
+    second: InvincibilityPowerUp_2
+  - first:
+      213: -7381161300990110416
+    second: InvincibilityPowerUp_3
+  - first:
+      213: 7721400933024724860
+    second: InvincibilityPowerUp_4
+  - first:
+      213: -6665202008839300116
+    second: InvincibilityPowerUp_5
+  - first:
+      213: 4151721237080138111
+    second: InvincibilityPowerUp_6
+  - first:
+      213: 7876334225072918003
+    second: InvincibilityPowerUp_7
+  - first:
+      213: -6211412670933445807
+    second: InvincibilityPowerUp_8
+  - first:
+      213: -7838251402836926406
+    second: InvincibilityPowerUp_9
+  - first:
+      213: 8908191317396975914
+    second: InvincibilityPowerUp_10
+  - first:
+      213: -3425928311273677279
+    second: InvincibilityPowerUp_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: InvincibilityPowerUp_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8
+        width: 1024
+        height: 1016
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99a837a90f3d80240800000000000000
+      internalID: 4758286036653804185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvincibilityPowerUp_1
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 415
+        width: 234
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23edc75d097a01ef0800000000000000
+      internalID: -139427347949625806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvincibilityPowerUp_2
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 679
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a2bc5cec2cf59f90800000000000000
+      internalID: -6947369580274863447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvincibilityPowerUp_3
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 629
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 035df9067e8d09990800000000000000
+      internalID: -7381161300990110416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvincibilityPowerUp_4
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 641
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c77fe452d3de72b60800000000000000
+      internalID: 7721400933024724860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvincibilityPowerUp_5
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 623
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cebd9e236127083a0800000000000000
+      internalID: -6665202008839300116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvincibilityPowerUp_6
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 591
+        width: 39
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f716b96e770ed9930800000000000000
+      internalID: 4151721237080138111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvincibilityPowerUp_7
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 599
+        width: 9
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fd09b14f3c5e4d60800000000000000
+      internalID: 7876334225072918003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvincibilityPowerUp_8
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 599
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 153d6a3d511acc9a0800000000000000
+      internalID: -6211412670933445807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvincibilityPowerUp_9
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 523
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a30a2b1c0efe83390800000000000000
+      internalID: -7838251402836926406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvincibilityPowerUp_10
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 495
+        width: 75
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a217aa83ec040ab70800000000000000
+      internalID: 8908191317396975914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvincibilityPowerUp_11
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 501
+        width: 25
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12e149c2a58a470d0800000000000000
+      internalID: -3425928311273677279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      InvincibilityPowerUp_0: 4758286036653804185
+      InvincibilityPowerUp_1: -139427347949625806
+      InvincibilityPowerUp_10: 8908191317396975914
+      InvincibilityPowerUp_11: -3425928311273677279
+      InvincibilityPowerUp_2: -6947369580274863447
+      InvincibilityPowerUp_3: -7381161300990110416
+      InvincibilityPowerUp_4: 7721400933024724860
+      InvincibilityPowerUp_5: -6665202008839300116
+      InvincibilityPowerUp_6: 4151721237080138111
+      InvincibilityPowerUp_7: 7876334225072918003
+      InvincibilityPowerUp_8: -6211412670933445807
+      InvincibilityPowerUp_9: -7838251402836926406
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

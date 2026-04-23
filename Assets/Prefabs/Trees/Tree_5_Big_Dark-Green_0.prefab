@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6146534813379257042}
   - component: {fileID: 4202281837584422811}
   - component: {fileID: 4410146132943934860}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tree_5_Big_Dark-Green_0
-  m_TagString: Untagged
+  m_TagString: Trees
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 464819837
-  m_SortingLayer: 8
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_Sprite: {fileID: -3141404667561166036, guid: 5248fe1fce7a5264da3e4ad31e287922, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

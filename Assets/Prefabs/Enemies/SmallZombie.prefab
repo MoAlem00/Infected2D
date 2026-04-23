@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 4163515717041588295}
   - component: {fileID: 9169935981892150203}
   - component: {fileID: 7347491398920043699}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: SmallZombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -159,6 +159,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1253bb89df1dfa144a2464218fdbedf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  axePrefab: {fileID: 1021478780813075165, guid: d6f0aae024568214f8cfcb248eb17388, type: 3}
+  shootPoint: {fileID: 1786123566189608346}
+  zombieSounds:
+  - {fileID: 8300000, guid: 5fe51dc19bcfbd94381a8cd57451b906, type: 3}
+  - {fileID: 8300000, guid: 2827ef3a49a0dae458156731b6dc911f, type: 3}
+  - {fileID: 8300000, guid: 45b65f2385e514948a1e314d412e4fc6, type: 3}
+  - {fileID: 8300000, guid: f0b0f8b39b60db240bed6b2d01b2afe2, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: 89ceaa12a81cce0428a60f9adecbbc8f, type: 3}
+  - {fileID: 8300000, guid: b73fb55dc316cae459840f40e7a470ab, type: 3}
+  - {fileID: 8300000, guid: 6f2944e55c207f94fac16d9c7cae4c31, type: 3}
+  - {fileID: 8300000, guid: 173ded54768c3f4499fb9c2f5dceaff1, type: 3}
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -180,23 +192,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  moveSpeed: 1
-  chaseSpeed: 3
-  chaseRadius: 20
-  attackRadius: 10
-  axePrefab: {fileID: 1021478780813075165, guid: d6f0aae024568214f8cfcb248eb17388, type: 3}
-  shootPoint: {fileID: 1786123566189608346}
-  fireRate: 3
-  zombieSounds:
-  - {fileID: 8300000, guid: 5fe51dc19bcfbd94381a8cd57451b906, type: 3}
-  - {fileID: 8300000, guid: 2827ef3a49a0dae458156731b6dc911f, type: 3}
-  - {fileID: 8300000, guid: 45b65f2385e514948a1e314d412e4fc6, type: 3}
-  - {fileID: 8300000, guid: f0b0f8b39b60db240bed6b2d01b2afe2, type: 3}
-  deathSounds:
-  - {fileID: 8300000, guid: 89ceaa12a81cce0428a60f9adecbbc8f, type: 3}
-  - {fileID: 8300000, guid: b73fb55dc316cae459840f40e7a470ab, type: 3}
-  - {fileID: 8300000, guid: 6f2944e55c207f94fac16d9c7cae4c31, type: 3}
-  - {fileID: 8300000, guid: 173ded54768c3f4499fb9c2f5dceaff1, type: 3}
+  throwAxeSound: {fileID: 8300000, guid: b9c3b601b9a56c44bb2e57788232cdae, type: 3}
+  coinPrefab: {fileID: 4626153001159714424, guid: a164a97c880f3ac4ead106803d69f3b1, type: 3}
 --- !u!70 &7103008571211811442
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -247,6 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  uiManager: {fileID: 0}
   maxHealth: 100
 --- !u!50 &9169935981892150203
 Rigidbody2D:

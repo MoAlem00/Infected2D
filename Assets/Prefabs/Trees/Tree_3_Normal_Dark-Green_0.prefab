@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7782192912475055290}
   - component: {fileID: 117793486952883232}
   - component: {fileID: 7884049099294458181}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tree_3_Normal_Dark-Green_0
-  m_TagString: Untagged
+  m_TagString: Trees
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 464819837
-  m_SortingLayer: 12
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_Sprite: {fileID: 2894618031000275060, guid: 5fd5fb4e7ad879a4288443ee7153955e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

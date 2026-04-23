@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1355225868481395498}
   - component: {fileID: 231251481273317912}
   - component: {fileID: 6658682580498865547}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tree_1_Spruce_Dark-Green_0
-  m_TagString: Untagged
+  m_TagString: Trees
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 464819837
-  m_SortingLayer: 8
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_Sprite: {fileID: -3250622870561174796, guid: c49fdecc49fc6dd4189cbfbe4b5683dd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -6,11 +6,12 @@ public class SoundsManager : MonoBehaviour
 {
     public static SoundsManager Instance;
     
+    
     public AudioSource musicSource;
-    public AudioSource sFXSource;
-
-    public AudioClip[] gameMusic;
-    public AudioClip menuMusic;
+    
+    [SerializeField] private AudioSource sFXSource;
+    [SerializeField] private AudioClip[] gameMusic;
+    [SerializeField] private AudioClip menuMusic;
 
 
     private void Awake()
@@ -25,25 +26,21 @@ public class SoundsManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    void Start()
-    {
-        
-    }
     
     
-    public void PlayMusic(AudioClip clip,float volume)
+    
+    private void PlayMusic(AudioClip clip)//,float volume = 0.6f)
     {
         if (clip == null) return;
         
         musicSource.clip = clip;
         musicSource.loop = false;
-        musicSource.volume = volume;
+        //musicSource.volume = volume;
         musicSource.Play();
     }
     
 
-    public void PlaySFX(AudioClip clip, float volume = 1.0f)
+    public void PlaySFX(AudioClip clip, float volume)
     {
         if (clip == null) return;
         
@@ -54,18 +51,22 @@ public class SoundsManager : MonoBehaviour
 
     public void PlayMenuMusic()
     {
-        PlayMusic(menuMusic, 0.5f);
+        PlayMusic(menuMusic);
     }
 
-    public IEnumerator PlayShuffleMusic()
+    public IEnumerator PlayShuffleMusic()//play shuffle music
     {
-        if (gameMusic == null || gameMusic.Length == 0) yield break;
+        if (gameMusic == null || gameMusic.Length == 0) yield break; 
         while (true)
         {
             int random = Random.Range(0, gameMusic.Length);
-            PlayMusic(gameMusic[random],0.5f);
+            PlayMusic(gameMusic[random]);
             yield return new WaitForSeconds(gameMusic[random].length);
         }
     }
-
+    
+    public void StopSoundsEffects(AudioSource source)
+    {
+        source.Stop();
+    }
 }

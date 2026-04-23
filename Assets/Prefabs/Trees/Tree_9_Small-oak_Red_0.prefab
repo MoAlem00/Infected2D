@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6341740859626974355}
   - component: {fileID: 8759705344335175850}
   - component: {fileID: 4748128304625975506}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tree_9_Small-oak_Red_0
-  m_TagString: Untagged
+  m_TagString: Trees
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 464819837
-  m_SortingLayer: 12
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_Sprite: {fileID: -4290808290559059868, guid: 05c767c6d3148274a819f92721f20b77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

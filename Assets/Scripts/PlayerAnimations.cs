@@ -1,46 +1,49 @@
-using System;
 using UnityEngine;
 
+//script that handles player animations
 public class PlayerAnimations : MonoBehaviour
 {
-    Animator animator;
-
+    private Animator animator;
+    private string moveDownAnimation = "isMovingDown";
+    private string moveLeftAnimation = "isMovingLeft";
+    private string moveRightAnimation = "isMovingRight";
+    private string moveUpAnimation = "isMovingUp";
+    private string deadAnimation = "isDead";
     private void Awake()
     {
-        if(animator == null)
-            animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
     
     public void ResetAnimations()
     {
-        animator.SetBool("isMovingDown", false);
-        animator.SetBool("isMovingLeft", false);
-        animator.SetBool("isMovingRight", false);
-        animator.SetBool("isMovingUp", false);
+        animator.SetBool(moveDownAnimation, false);
+        animator.SetBool(moveLeftAnimation, false);
+        animator.SetBool(moveRightAnimation, false);
+        animator.SetBool(moveUpAnimation, false);
     }
 
     public void MoveUp()
     {
-        animator.SetBool("isMovingUp", true);
+        animator.SetBool(moveUpAnimation, true);
     }
 
     public void MoveDown()
     {
-        animator.SetBool("isMovingDown", true);
+        animator.SetBool(moveDownAnimation, true);
     }
 
     public void MoveLeft()
     {
-        animator.SetBool("isMovingLeft", true);
+        animator.SetBool(moveLeftAnimation, true);
     }
 
     public void MoveRight()
     {
-        animator.SetBool("isMovingRight", true);
+        animator.SetBool(moveRightAnimation, true);
     }
     
     public void Dead()
     {
-        animator.SetTrigger("isDead");
+        animator.SetTrigger(deadAnimation);
     }
 }
