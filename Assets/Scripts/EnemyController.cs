@@ -9,6 +9,7 @@ public enum EnemyState
 }
 public class EnemyController : MonoBehaviour
 {
+    
     private Animator anim;
     private WaveManager waveManager;
     private Transform player;
