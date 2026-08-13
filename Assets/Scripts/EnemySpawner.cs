@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private BasicObjectPooler enemyPool;
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private GameObject portalEffect;
     [SerializeField] private AudioClip portalSound;
@@ -22,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
         
     }
 
-    public IEnumerator SpawnEnemy(int amount)
+    public IEnumerator SpawnEnemy(int amount,float delay)
     {
         for (int i = 0; i < amount; i++)
         {
@@ -32,11 +31,9 @@ public class EnemySpawner : MonoBehaviour
             AudioSource.PlayClipAtPoint(portalSound,currentPos,0.5f);//playing portal sound
             GameObject portal = Instantiate(portalEffect, currentPos, Quaternion.Euler(0f, 0f, 90f));//spawn portal at the given spawn point
             yield return new WaitForSeconds(0.3f);
-            GameObject enemy = enemyPool.GetPooledObject();
-            enemy.transform.position = currentPos;
             /*GameObject enemy = Instantiate(enemyPrefab, currentPos, Quaternion.identity);//spawn enemy at the given spawn point*/
             Destroy(portal, 1f);//destroy the portal
-            yield return new WaitForSeconds(spawnDelay);
+            yield return new WaitForSeconds(delay);
         }
     }
 }

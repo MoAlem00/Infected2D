@@ -1,14 +1,17 @@
+using System;
 using UnityEngine;
 
 //script that handles player shooting and ammo
 public class WeaponShoot : MonoBehaviour
 {
     
-    [SerializeField] private GameObject bulletPrefab;
+    //[SerializeField] private Bullet bulletPrefab;
     [SerializeField] private Transform firePos;
     [SerializeField] private MuzzleFlash muzzleFlash;
     [SerializeField] private AudioClip gunShotClip;
     [SerializeField] private AudioClip emptyGunSound;
+    [SerializeField] private Transform parent;
+    [SerializeField] private int initialPoolSize = 10;
     
     //public Weapon currWeapon;
     public int currentAmmo;
@@ -21,9 +24,17 @@ public class WeaponShoot : MonoBehaviour
     public float minFireRateUpgrade = 0.05f;
     public float maxFireRateUpgrade = 0.5f;
     
-    public int damage = 50;
+    private int damage = 50;
     public float fireRate = 0.5f;
-    
+
+    private ObjectPooler<Bullet> bulletPooler;
+    [SerializeField] private Bullet bullet;
+
+    private void Awake()
+    {
+        bulletPooler = new ObjectPooler<Bullet>(bullet,parent,initialPoolSize);
+    }
+
     private void Start()
     {
         currentAmmo = ammoCapacity;
@@ -56,7 +67,9 @@ public class WeaponShoot : MonoBehaviour
     private void Shoot()//shoot
     {
         muzzleFlash.TriggerMuzzleFlash();//play muzzle flash effect
-        Instantiate(bulletPrefab, firePos.position, firePos.rotation);//spawn bullet
+        bullet = bulletPooler.GetPooledObject(firePos.position, firePos.rotation);
+        bullet.SetDamage(damage);
+        //Instantiate(bulletPrefab, firePos.position, firePos.rotation);//spawn bullet
         currentAmmo--;//decrease ammo
         UIManager.Instance.SetAmmoText(currentAmmo);//update ammo left
     }

@@ -44,7 +44,7 @@ public class Explosion : MonoBehaviour
         {
             int i =  Random.Range(0, hitSounds.Length);
             AudioSource.PlayClipAtPoint(hitSounds[i], transform.position,0.3f);
-            barrelHealth.TakeDamage(weapon.damage);
+            barrelHealth.TakeDamage(50); 
             healthBar.value = barrelHealth.health;
             Destroy(other.gameObject);
         }

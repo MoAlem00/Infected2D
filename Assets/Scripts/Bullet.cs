@@ -1,10 +1,10 @@
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 //script that handles bullet movement, hit effects, hit sounds
-public class Bullet : MonoBehaviour
+public class Bullet : PooledBehaviour
 {
-    private WeaponShoot weapon;//getting the weapon reference to get the damage
     private float speed = 10;
     
     [SerializeField] private AudioClip hitSound;
@@ -14,21 +14,28 @@ public class Bullet : MonoBehaviour
     [SerializeField] private GameObject bulletHitMetalEffect;
     [SerializeField] private GameObject bulletHitWoodEffect;
     [SerializeField] private GameObject bloodEffect;
-    
-    private void Start()
+    private float bulletTimer;
+    private float bulletTime = 3f;
+    private int damage;
+    private bool hasHit;
+
+    public void SetDamage(int d)
     {
-        Destroy(gameObject, 3f);//destroy bullet after 3s if it didnt hit anything
-        weapon = GameObject.FindGameObjectWithTag("Weapon").GetComponent<WeaponShoot>();
+        damage = d;
     }
 
     private void Update()
     {
         //move the bullet
         transform.Translate(Vector2.right * (speed * Time.deltaTime));
+        bulletTimer -= Time.deltaTime;
+        if (bulletTimer <= 0f)
+            Despawn();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(hasHit) return;
         //if bullet hits enemy
         if (other.CompareTag("Enemy"))
         {
@@ -38,34 +45,48 @@ public class Bullet : MonoBehaviour
             HealthComponent healthComponent = other.GetComponent<HealthComponent>();//getting health reference for enemy
             if (healthComponent != null)
             {
-                healthComponent.TakeDamage(weapon.damage);//deal damage for enemy
-                Destroy(gameObject);
+                healthComponent.TakeDamage(damage);//deal damage for enemy
             }
+            hasHit = true;
+            Despawn();
         }
         //if bullet hits metal
         if (other.CompareTag("Metal"))
         {
+            hasHit = true;
             int i = Random.Range(0, metalHitSounds.Length);
             AudioSource.PlayClipAtPoint(metalHitSounds[i], transform.position,0.3f);//play random metal sounds
             GameObject fire = Instantiate(bulletHitMetalEffect, transform.position, transform.rotation);//play hitting metal effect
             Destroy(fire, 0.3f);//destroy the effect
-            Destroy(gameObject);//destroy the bullet
+            Despawn();//destroy the bullet
         }
         //if bullet hits buildings
         if (other.CompareTag("Buildings"))
         {
+            hasHit = true;
             int i = Random.Range(0, rockHitSounds.Length);
             AudioSource.PlayClipAtPoint(rockHitSounds[i], transform.position,0.7f);//play random concrete sounds
-            Destroy(gameObject);
+            Despawn();
         }
         //if bullet hit tress
         if (other.CompareTag("Trees"))
         {
+            hasHit = true;
             int i = Random.Range(0, woodHitSounds.Length);
             AudioSource.PlayClipAtPoint(woodHitSounds[i], transform.position,0.3f);//play random hitting wood sounds
             GameObject woodEffect = Instantiate(bulletHitWoodEffect, transform.position, transform.rotation);//play hitting wood effect
             Destroy(woodEffect, 0.3f);//destroy effect
-            Destroy(gameObject);//destroy bullet
+            Despawn();//destroy bullet
         }
+    }
+
+    public override void OnSpawned()
+    {
+        hasHit = false;
+        bulletTimer = bulletTime;
+    }
+
+    public override void OnDespawned()
+    {
     }
 }

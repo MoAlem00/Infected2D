@@ -118,14 +118,11 @@ public class EnemyController : MonoBehaviour
         Destroy(gameObject,2f);
     }
     
-    //*** i didnt use (up and down) animations ***//
 
     private void ResetAnimations()
     {
         anim.SetBool("MoveRight", false);
         anim.SetBool("MoveLeft", false);
-        /*anim.SetBool("MoveUp", false);
-        anim.SetBool("MoveDown", false);*/
     }
 
     //for chase animations we check player position to know which direction should enemy face
@@ -135,10 +132,6 @@ public class EnemyController : MonoBehaviour
             anim.SetBool("MoveRight", true);
         else if(player.position.x < transform.position.x)
             anim.SetBool("MoveLeft", true);
-        /*else if(player.position.y >= transform.position.y)
-            anim.SetBool("MoveUp", true);
-        else if(player.position.y <= transform.position.y)
-            anim.SetBool("MoveDown", true);*/
     }
     //for patrol animations we check patrol point position to know which direction should enemy face
     private void SetAnimationsToPatrol()
@@ -147,10 +140,6 @@ public class EnemyController : MonoBehaviour
             anim.SetBool("MoveRight", true);
         else if(currentPoint.x < transform.position.x)
             anim.SetBool("MoveLeft", true);
-        /*else if(currentPoint.y >= transform.position.y)
-            anim.SetBool("MoveUp", true);
-        else if(currentPoint.y <= transform.position.y)
-            anim.SetBool("MoveDown", true);*/
     }
     
     
