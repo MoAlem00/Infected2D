@@ -69,7 +69,6 @@ public class WeaponShoot : MonoBehaviour
         muzzleFlash.TriggerMuzzleFlash();//play muzzle flash effect
         bullet = bulletPooler.GetPooledObject(firePos.position, firePos.rotation);
         bullet.SetDamage(damage);
-        //Instantiate(bulletPrefab, firePos.position, firePos.rotation);//spawn bullet
         currentAmmo--;//decrease ammo
         UIManager.Instance.SetAmmoText(currentAmmo);//update ammo left
     }

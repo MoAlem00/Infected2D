@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 //scripts that handles Enemy states(chase,patrol), movement, death, animations, shoot and sounds 
 public enum EnemyState
@@ -7,7 +9,7 @@ public enum EnemyState
     Patrol,
     Chase
 }
-public class EnemyController : MonoBehaviour
+public class EnemyController : PooledBehaviour
 {
     
     private Animator anim;
@@ -16,8 +18,9 @@ public class EnemyController : MonoBehaviour
     private AudioSource audioSource;
     private HealthComponent health;
     private Collider2D enemyCollider;
+    private EnemySpawner spawner;
     
-    private bool hasDied = false;
+    private bool hasDied;
     private float nextFireTime;
     private Vector2 currentPoint;
     private float moveSpeed = 1f;
@@ -33,19 +36,25 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Transform[] patrolPoints;
     [SerializeField] private AudioClip throwAxeSound;
     [SerializeField] private GameObject coinPrefab;
+
+    public static event Action OnEnemyDead;
     
     EnemyState state = EnemyState.Patrol;
-    
-    private void Start()
+
+    private void Awake()
     {
         enemyCollider =  GetComponent<Collider2D>();
         audioSource = GetComponent<AudioSource>();
         waveManager = GameObject.Find("WaveManager").GetComponent<WaveManager>();
+        spawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
         health = GetComponent<HealthComponent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         anim = GetComponent<Animator>();
-        
-        patrolPoints = waveManager.patrolPoints;//Get patrol points from the WaveManager
+    }
+
+    private void Start()
+    {
+        patrolPoints = spawner.SpawnPoints;//Get patrol points from the WaveManager
         if (patrolPoints.Length > 0)
         {
             //pick a random point to start the patrol to it
@@ -57,19 +66,19 @@ public class EnemyController : MonoBehaviour
         {
             Debug.Log("no patrol points");
         }
-        StartCoroutine(PlayZombieSound());//start coroutine that plays zombie sounds randomly
+        
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (hasDied)
-            return;
         if (health.health <= 0 && !hasDied)//if enemy health reach 0 -> die
         {
-            EnemyDead();
+            StartCoroutine(EnemyDead());
             return;
         }
+        if (hasDied)
+            return;
         //calculate distance to player to decide what should the enemy do 
         float distanceToPlayer = Vector3.Distance(transform.position,player.position);
         if (distanceToPlayer <= chaseRadius)//if distance <= chase radius
@@ -102,8 +111,9 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void EnemyDead()//handles enemy death
+    private IEnumerator EnemyDead()//handles enemy death
     {
+        OnEnemyDead?.Invoke();
         enemyCollider.enabled = false;
         GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
         Destroy(coin, 10f);
@@ -111,11 +121,12 @@ public class EnemyController : MonoBehaviour
         SoundsManager.Instance.PlaySFX(deathSounds[i],0.7f);//play random death sound
         audioSource.Stop();//stop zombie sounds
         anim.SetTrigger("isDead");//death animation
-        waveManager.enemyKilled++;//tells wave manager to add +1 on enemy killed
-        waveManager.totalEnemiesKilled++;//tells wave manager to add +1 on total Enemies killed
+        //waveManager.enemyKilled++;//tells wave manager to add +1 on enemy killed
+        //waveManager.totalEnemiesKilled++;//tells wave manager to add +1 on total Enemies killed
         UIManager.Instance.SetEnemiesText(waveManager.waveSize - waveManager.enemyKilled);//update enemies left
         hasDied = true;
-        Destroy(gameObject,2f);
+        yield return new WaitForSeconds(2f);
+        Despawn();
     }
     
 
@@ -169,5 +180,19 @@ public class EnemyController : MonoBehaviour
             yield return new WaitForSeconds(zombieSounds[i].length + 0.5f);
         }
     }
-    
+
+    public override void OnSpawned()
+    {
+        hasDied = false;
+        enemyCollider.enabled = true;
+        health.ResetHealth();
+        ResetAnimations();
+        SetAnimationsToPatrol();
+        StartCoroutine(PlayZombieSound());//start coroutine that plays zombie sounds randomly
+    }
+
+    public override void OnDespawned()
+    {
+        hasDied = true;
+    }
 }

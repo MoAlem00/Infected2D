@@ -47,5 +47,10 @@ public class HealthComponent : MonoBehaviour
         maxHealth = Mathf.Clamp(maxHealth + upgradeAmount, 0, maxUpgradeHealth);
         UIManager.Instance.playerHealthSlider.maxValue = maxHealth;
     }
+
+    public void ResetHealth()
+    {
+        health = maxHealth;
+    }
     
 }
