@@ -1,9 +1,13 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 //script that handles the axe that shot by zombies
-public class Axe : MonoBehaviour
+public class Axe : PooledBehaviour
 {
-    private float speed = 5;
+    private float speed;
+    private float stopSpeed = 0f;
+    private float normalSpeed = 5f;
     private Animator anim;
     private Transform target;
     private Vector3 dir;
@@ -14,34 +18,43 @@ public class Axe : MonoBehaviour
     [SerializeField] private GameObject sparkEffect;
     [SerializeField] private AudioClip[] hitSounds;
     [SerializeField] private int damage = 20;
-    
+    private float axeTimer;
+    private float axeTime = 3f;
+    private bool hasHit;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+        target = GameObject.FindWithTag("Player").transform;
+        spinningEffect = GetComponentInChildren<ParticleSystem>();
+    }
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
-        Destroy(gameObject, 2f);//destroy after 2s if it didnt hit anything
-        anim.SetTrigger("AxeAttack");//start spinning animation when axe is created
-        target = GameObject.FindWithTag("Player").transform; //getting the player transform to shoot at the player position.
-        dir = target.position - transform.position;//calculate the direction to the player.
-        spinningEffect = GetComponentInChildren<ParticleSystem>();
+        speed = normalSpeed;
     }
 
     private void Update()
     {
         transform.Translate(dir.normalized * (speed * Time.deltaTime));//moving the axe.
+        axeTimer -= Time.deltaTime;
+        if (axeTimer <= 0f)
+            Despawn();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (hasHit) return;
         //if it hit player
         if (other.CompareTag("Player"))
         {
+            hasHit = true;
             PlayerController playerController = other.gameObject.GetComponent<PlayerController>();//get the player reference to play hit sound from there
             if (playerController != null)
                 playerController.TryPlayHitSound(); //so player hit sound dont play many times
             GameObject blood = Instantiate(bloodEffect, transform.position, transform.rotation); //blood effect.
             Destroy(blood, 1f);
-            speed = 0;//stop moving
+            speed = stopSpeed;
             anim.SetTrigger("Land"); //land animation to stop spinning.
             spinningEffect.Stop();//stop particle effect
             transform.SetParent(other.transform);//making it a child of the player so it stick on it.
@@ -49,25 +62,44 @@ public class Axe : MonoBehaviour
             HealthComponent healthComponent = other.GetComponent<HealthComponent>();//getting health reference for the player
             if (healthComponent != null)
                 healthComponent.TakeDamage(damage);//dealing damage to the player.
-            Destroy(gameObject, 1f);//destroy it after 1s of sticking on the player.
+            Despawn();
         }
         //if it hit metals
         if (other.CompareTag("Metal"))
         {
+            hasHit = true;
             GameObject spark = Instantiate(sparkEffect, transform.position, transform.rotation);//make spark effect
             Destroy(spark,0.3f);
             int rand = Random.Range(0, hitSounds.Length);
             AudioSource.PlayClipAtPoint(hitSounds[rand], transform.position,0.7f);//play random metal sound
-            Destroy(gameObject);
+            Despawn();
         }
         //if it hit buildings just destroy
         if (other.CompareTag("Buildings"))
         {
-            Destroy(gameObject);
+            hasHit = true;
+            Despawn();
         }
         if (other.CompareTag("Barrel"))
         {
-            Destroy(gameObject);
+            hasHit = true;
+            Despawn();
         }
+    }
+
+    public override void OnSpawned()
+    {
+        transform.SetParent(null);
+        spinningEffect.Play();
+        anim.SetTrigger("AxeAttack");//start spinning animation when axe is created
+        dir = target.position - transform.position;//calculate the direction to the player.
+        hasHit = false;
+        axeTimer = axeTime;
+        speed = normalSpeed;
+    }
+
+    public override void OnDespawned()
+    {
+        
     }
 }

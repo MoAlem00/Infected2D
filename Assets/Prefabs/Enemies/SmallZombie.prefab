@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1253bb89df1dfa144a2464218fdbedf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axePrefab: {fileID: 1021478780813075165, guid: d6f0aae024568214f8cfcb248eb17388, type: 3}
+  axePrefab: {fileID: -605845391626686535, guid: d6f0aae024568214f8cfcb248eb17388, type: 3}
   shootPoint: {fileID: 1786123566189608346}
   zombieSounds:
   - {fileID: 8300000, guid: 5fe51dc19bcfbd94381a8cd57451b906, type: 3}
@@ -194,6 +194,8 @@ MonoBehaviour:
   - {fileID: 0}
   throwAxeSound: {fileID: 8300000, guid: b9c3b601b9a56c44bb2e57788232cdae, type: 3}
   coinPrefab: {fileID: 4626153001159714424, guid: a164a97c880f3ac4ead106803d69f3b1, type: 3}
+  parent: {fileID: 0}
+  initialPoolSize: 20
 --- !u!70 &7103008571211811442
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -244,8 +246,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  uiManager: {fileID: 0}
   maxHealth: 100
+  maxUpgradeHealth: 500
 --- !u!50 &9169935981892150203
 Rigidbody2D:
   serializedVersion: 5

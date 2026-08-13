@@ -28,21 +28,7 @@ public class WaveManager : MonoBehaviour
     {
         StartCoroutine(StartWave());//spawn first wave at start
     }
-
-    // Update is called once per frame
-    /*private void Update()
-    {
-        if (enemyKilled >= waveSize && !waveFinished)//if all enemies in that wave is killed -> wave is finished
-        {
-            HandleWaveFinished();
-        }
-        if (waveFinished && !upgradePanelShowing)//check if we can start the next wave
-        {
-            upgradePanelShowing = true;
-            StartCoroutine(upgradesPanel.ShowUpgradePanel());
-        }
-    }
-    */
+    
 
     private void HandleWaveFinished()
     {
@@ -89,15 +75,16 @@ public class WaveManager : MonoBehaviour
             upgradePanelShowing = true;
             StartCoroutine(upgradesPanel.ShowUpgradePanel());
         }
+        UIManager.Instance.SetEnemiesText(waveSize - enemyKilled);//update enemies left
     }
 
     private void OnEnable()
     {
-        EnemyController.OnEnemyDead += HandleEnemyKilled;
+        Enemy.OnEnemyDead += HandleEnemyKilled;
     }
 
     private void OnDisable()
     {
-        EnemyController.OnEnemyDead -= HandleEnemyKilled;
+        Enemy.OnEnemyDead -= HandleEnemyKilled;
     }
 }
