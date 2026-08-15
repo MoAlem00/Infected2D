@@ -5,7 +5,7 @@ public class UpgradesManager : MonoBehaviour
 {
     [SerializeField] private PlayerController player;
     [SerializeField] private HealthComponent health;
-    [SerializeField] private WeaponShoot weapon;
+    [SerializeField] private AssaultRifle weapon;
     [SerializeField] private CoinsManager coins;
     [SerializeField] private UpgradesWindow upgradesWindow;
     private int healthUpgradeAmount = 50;

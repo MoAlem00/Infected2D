@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject instructionPanel;
     [SerializeField] private GameObject gameStoryPanel;
     [SerializeField] private WaveManager waveManager;
-    [SerializeField] private WeaponShoot gun;
+    [SerializeField] private AssaultRifle gun;
     
     private bool instructionShowing = true;
 

@@ -2,10 +2,9 @@ using System;
 using UnityEngine;
 
 //script that handles player shooting and ammo
-public class WeaponShoot : MonoBehaviour
+public class AssaultRifle : MonoBehaviour
 {
-    
-    //[SerializeField] private Bullet bulletPrefab;
+
     [SerializeField] private Transform firePos;
     [SerializeField] private MuzzleFlash muzzleFlash;
     [SerializeField] private AudioClip gunShotClip;
@@ -13,7 +12,6 @@ public class WeaponShoot : MonoBehaviour
     [SerializeField] private Transform parent;
     [SerializeField] private int initialPoolSize = 10;
     
-    //public Weapon currWeapon;
     public int currentAmmo;
     private int ammoBox = 30;
     private float clipDelay = 0.2f;
@@ -29,6 +27,7 @@ public class WeaponShoot : MonoBehaviour
 
     private ObjectPooler<Bullet> bulletPooler;
     [SerializeField] private Bullet bullet;
+    public bool IsFull => currentAmmo == ammoCapacity;
 
     private void Awake()
     {
@@ -72,12 +71,7 @@ public class WeaponShoot : MonoBehaviour
         currentAmmo--;//decrease ammo
         UIManager.Instance.SetAmmoText(currentAmmo);//update ammo left
     }
-
-    public void GiveAmmo()//give ammo when picking ammo box
-    {
-        currentAmmo = Mathf.Clamp(currentAmmo + ammoBox, 0, ammoCapacity);
-        UIManager.Instance.SetAmmoText(currentAmmo);//update ammo amount in ui
-    }
+    
 
     public void UpgradeAmmoCapacity(int upgradeAmount)
     {
@@ -88,5 +82,11 @@ public class WeaponShoot : MonoBehaviour
     public void UpgradeFireRate(float upgradeAmount)
     {
         fireRate = Mathf.Clamp(fireRate - upgradeAmount, minFireRateUpgrade, maxFireRateUpgrade);
+    }
+
+    public void GiveAmmo(int amount)
+    {
+        currentAmmo = Mathf.Clamp(currentAmmo + amount, 0, ammoCapacity);
+        UIManager.Instance.SetAmmoText(currentAmmo);
     }
 }

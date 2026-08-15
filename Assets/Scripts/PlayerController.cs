@@ -62,21 +62,13 @@ public class PlayerController : MonoBehaviour
         }
         //update movement animations
         if (input.y > 0)
-        {
             anim.MoveUp();
-        }
         else if (input.y < 0)
-        {
             anim.MoveDown();
-        }
         else if (input.x < 0)
-        {
             anim.MoveLeft();
-        }
         else if (input.x > 0)
-        {
             anim.MoveRight();
-        }
         
     }
 
@@ -133,5 +125,10 @@ public class PlayerController : MonoBehaviour
     public void UpgradeSpeed(float upgradeAmount)
     {
         moveSpeed = Mathf.Clamp(moveSpeed + upgradeAmount, 4, maxMoveSpeed);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
     }
 }

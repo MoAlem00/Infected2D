@@ -7,8 +7,9 @@ public class HealthComponent : MonoBehaviour
     
     [SerializeField] public int maxHealth = 100;
     public int maxUpgradeHealth = 500;
-    private int heal = 25;
-
+    //private int heal = 25;
+    public bool IsFull => health == maxHealth;
+    
     private void Start()
     {
         health = maxHealth;
@@ -31,9 +32,9 @@ public class HealthComponent : MonoBehaviour
             
     }
 
-    public void Heal()
+    public void Heal(int healAmount)
     {
-        health = Mathf.Clamp(health + heal, 0, maxHealth);
+        health = Mathf.Clamp(health + healAmount, 0, maxHealth);
         if (CompareTag("Player")) //update player health bar when healing
         {
             UIManager.Instance.SetPlayerHealth(health);

@@ -140,7 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff29dbf3a7cc5d84a9824c0758837f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healSound: {fileID: 8300000, guid: c73342128412b904a8b6d3001b8f45e1, type: 3}
+  pickUpSound: {fileID: 8300000, guid: e9e4666cfb909a04eb66084ab34355d2, type: 3}
+  healAmount: 25
 --- !u!114 &5084154580641774723
 MonoBehaviour:
   m_ObjectHideFlags: 0

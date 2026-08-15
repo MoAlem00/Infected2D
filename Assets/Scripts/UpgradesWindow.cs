@@ -20,7 +20,7 @@ public class UpgradesWindow : MonoBehaviour
     [SerializeField] private Button speedUpgradeButton;
     [SerializeField] private Button ammoCapacityUpgradeButton;
     [SerializeField] private Button fireRateUpgradeButton;
-    [SerializeField] private WeaponShoot weapon;
+    [SerializeField] private AssaultRifle weapon;
 
 
     public IEnumerator ShowUpgradePanel()
