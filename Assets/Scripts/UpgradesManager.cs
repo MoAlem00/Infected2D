@@ -79,6 +79,11 @@ public class UpgradesManager : MonoBehaviour
         {
             upgradesWindow.EnableFireRateButton();
         }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            coins.CheatCoins();
+        }
     }
 
 

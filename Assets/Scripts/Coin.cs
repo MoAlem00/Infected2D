@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-public class CoinsPickUp : MonoBehaviour
+public class Coins : Item
 {
     [SerializeField] private AudioClip coinSound;
     [SerializeField] private CoinsManager coinsManager;
@@ -11,7 +10,7 @@ public class CoinsPickUp : MonoBehaviour
         coinsManager = GameObject.FindGameObjectWithTag("CoinsManager").GetComponent<CoinsManager>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public override void PickUp(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
@@ -20,4 +19,14 @@ public class CoinsPickUp : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    /*private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            coinsManager.CollectCoin();
+            SoundsManager.Instance.PlaySFX(coinSound, 0.5f);
+            Destroy(gameObject);
+        }
+    }*/
 }

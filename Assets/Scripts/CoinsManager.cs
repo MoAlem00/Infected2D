@@ -5,7 +5,7 @@ public class CoinsManager : MonoBehaviour
 {
     [SerializeField] private int coinAmount = 5;
     [SerializeField] private UIManager uiManager;
-
+    
 
     private void Start()
     {
@@ -27,5 +27,11 @@ public class CoinsManager : MonoBehaviour
     public int GetCoins()
     {
         return coinAmount;
+    }
+
+    public void CheatCoins()
+    {
+        coinAmount += 1000;
+        uiManager.UpdateCoinsText(coinAmount);
     }
 }

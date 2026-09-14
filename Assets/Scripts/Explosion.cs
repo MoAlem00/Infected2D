@@ -11,7 +11,7 @@ public class Explosion : MonoBehaviour
     [SerializeField] private LayerMask explosionLayers;
     [SerializeField] private AudioClip[] hitSounds;
     [SerializeField] private Slider healthBar;
-    private AssaultRifle weapon; 
+    //private AssaultRifle weapon; 
     private HealthComponent barrelHealth;
     
     
@@ -25,7 +25,7 @@ public class Explosion : MonoBehaviour
         exploded = false;
         barrelSpawner = GameObject.FindGameObjectWithTag("CollectiblesSpawner").GetComponent<SpawnCollectibles>();
         barrelHealth = GetComponent<HealthComponent>();
-        weapon = GameObject.FindGameObjectWithTag("Weapon").GetComponent<AssaultRifle>();
+        //weapon = GameObject.FindGameObjectWithTag("Weapon").GetComponent<AssaultRifle>();
         healthBar.maxValue = barrelHealth.maxHealth;
     }
 
@@ -46,7 +46,6 @@ public class Explosion : MonoBehaviour
             AudioSource.PlayClipAtPoint(hitSounds[i], transform.position,0.3f);
             barrelHealth.TakeDamage(50); 
             healthBar.value = barrelHealth.health;
-            Destroy(other.gameObject);
         }
 
     }

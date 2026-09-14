@@ -21,6 +21,5 @@ public class AmmoBox : Item
             weapon.GiveAmmo(ammo);
             ammoSpawner.SpawnAmmoBox();
         }
-        
     }
 }

@@ -78,7 +78,11 @@ public class Bullet : PooledBehaviour
             Destroy(woodEffect, 0.3f);//destroy effect
             Despawn();//destroy bullet
         }
+
+        if (other.CompareTag("Barrel"))
+            Despawn();
     }
+    
 
     public override void OnSpawned()
     {
