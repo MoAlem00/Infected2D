@@ -1,17 +1,24 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 //script that handles spawn collectibles(ammo box, heals, power ups)
 public class SpawnCollectibles : MonoBehaviour
 {
     
-    [SerializeField] private GameObject ammoBox;
-    [SerializeField] private GameObject healBox;
-    [SerializeField] private GameObject collectibles;
+    /*[SerializeField] private GameObject ammoBox;
+    [SerializeField] private GameObject healBox;*/
+    [SerializeField] private Transform collectibles;
     [SerializeField] private GameObject barrelsParent;
     [SerializeField] private LayerMask unSpawnableLayer;
     [SerializeField] private GameObject[] barrels;
+    [SerializeField] private AmmoBox ammoBox;
+    [SerializeField] private Bandage bandage;
+    [SerializeField] private int initialPoolSize = 5;
+    private ObjectPooler<AmmoBox> ammoBoxPooler;
+    private ObjectPooler<Bandage> bandagePooler;
     
-    private int boxesAtStart = 10;
+    private int boxesAtStart = 3;
     private int barrelsAmount = 10;
     private Vector3 spawnPosition;
     //map borders so it dont spawn outside the map
@@ -20,7 +27,11 @@ public class SpawnCollectibles : MonoBehaviour
     private int minX = -32;
     private int maxX = 48;
     
-    
+    private void Awake()
+    {
+        ammoBoxPooler = new ObjectPooler<AmmoBox>(ammoBox,collectibles,initialPoolSize);
+        bandagePooler = new ObjectPooler<Bandage>(bandage,collectibles,initialPoolSize);
+    }
 
     private void Start()
     {
@@ -67,8 +78,7 @@ public class SpawnCollectibles : MonoBehaviour
         }
         else
         {
-            GameObject ammo = Instantiate(ammoBox, spawnPosition, Quaternion.identity);
-            ammo.transform.SetParent(collectibles.transform);//making them children of game object to organize the hierarchy
+            ammoBoxPooler.GetPooledObject(spawnPosition,Quaternion.identity);
         }
     }
 
@@ -84,8 +94,7 @@ public class SpawnCollectibles : MonoBehaviour
         }
         else
         {
-            GameObject heal = Instantiate(healBox, spawnPosition, Quaternion.identity);
-            heal.transform.SetParent(collectibles.transform);
+            bandagePooler.GetPooledObject(spawnPosition,Quaternion.identity);
         }
     }
 }

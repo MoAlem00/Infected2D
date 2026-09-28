@@ -122556,9 +122556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd5aaf6b6647904abf61d4053f55ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoBox: {fileID: 2063521879962840691, guid: 3183d5ab1bd13bd439225fbfb0120f62, type: 3}
-  healBox: {fileID: 780154708951623269, guid: b60448c41ae7f1b47adbd61875866eed, type: 3}
-  collectibles: {fileID: 628626497}
+  collectibles: {fileID: 628626498}
   barrelsParent: {fileID: 563948839}
   unSpawnableLayer:
     serializedVersion: 2
@@ -122566,6 +122564,9 @@ MonoBehaviour:
   barrels:
   - {fileID: 6276313837462764147, guid: 7f62abf808ed5c844a265dca71ef2676, type: 3}
   - {fileID: 6049285697312808078, guid: 01abd95f048c32949a427abdda8b91ee, type: 3}
+  ammoBox: {fileID: 2685238301468468239, guid: 3183d5ab1bd13bd439225fbfb0120f62, type: 3}
+  bandage: {fileID: -2430060280966207024, guid: b60448c41ae7f1b47adbd61875866eed, type: 3}
+  initialPoolSize: 5
 --- !u!4 &592154200
 Transform:
   m_ObjectHideFlags: 0
@@ -155136,6 +155137,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinAmount: 0
   uiManager: {fileID: 1355315870}
+  coin: {fileID: 2217261820455161799, guid: a164a97c880f3ac4ead106803d69f3b1, type: 3}
+  parent: {fileID: 628626498}
+  initialPoolSize: 10
 --- !u!4 &2005499426
 Transform:
   m_ObjectHideFlags: 0

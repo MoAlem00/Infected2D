@@ -4,6 +4,7 @@ public class Bandage : Item
 {
     private SpawnCollectibles heartSpawner;
     [SerializeField] private int healAmount = 25;
+    //private bool isPickedUp = false;
 
     private void Start()
     {
@@ -15,9 +16,23 @@ public class Bandage : Item
         HealthComponent health =  other.GetComponent<HealthComponent>();
         if (health != null)
         {
-            if(health.IsFull) return;
+            if (health.IsFull)
+            {
+                canBePicked = false;
+                return;
+            }
             health.Heal(healAmount);
             heartSpawner.SpawnHeals();
+            canBePicked = true;
         }
+    }
+
+    public override void OnSpawned()
+    {
+        canBePicked = true;
+    }
+
+    public override void OnDespawned()
+    {
     }
 }

@@ -34,9 +34,9 @@ public class Enemy : PooledBehaviour
     [SerializeField] private AudioClip[] deathSounds;
     [SerializeField] private Transform[] patrolPoints;
     [SerializeField] private AudioClip throwAxeSound;
-    [SerializeField] private GameObject coinPrefab;
+    //[SerializeField] private GameObject coinPrefab;
     
-    public static event Action OnEnemyDead;
+    public static event Action<Vector3> OnEnemyDead;
     
     EnemyState state = EnemyState.Patrol;
 
@@ -94,10 +94,10 @@ public class Enemy : PooledBehaviour
 
     private IEnumerator EnemyDead()//handles enemy death
     {
-        OnEnemyDead?.Invoke();
+        OnEnemyDead?.Invoke(transform.position);
         enemyCollider.enabled = false;
-        GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
-        Destroy(coin, 10f);
+        //GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
+        //Destroy(coin, 10f);
         int i  = Random.Range(0, deathSounds.Length);
         SoundsManager.Instance.PlaySFX(deathSounds[i],0.7f);//play random death sound
         audioSource.Stop();//stop zombie sounds

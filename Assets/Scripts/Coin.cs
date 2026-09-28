@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Coins : Item
+public class Coin : Item
 {
     [SerializeField] private AudioClip coinSound;
     [SerializeField] private CoinsManager coinsManager;
@@ -14,19 +14,17 @@ public class Coins : Item
     {
         if (other.CompareTag("Player"))
         {
+            canBePicked = true;
             coinsManager.CollectCoin();
             SoundsManager.Instance.PlaySFX(coinSound, 0.5f);
-            Destroy(gameObject);
         }
     }
 
-    /*private void OnTriggerEnter2D(Collider2D other)
+    public override void OnSpawned()
     {
-        if (other.CompareTag("Player"))
-        {
-            coinsManager.CollectCoin();
-            SoundsManager.Instance.PlaySFX(coinSound, 0.5f);
-            Destroy(gameObject);
-        }
-    }*/
+    }
+
+    public override void OnDespawned()
+    {
+    }
 }

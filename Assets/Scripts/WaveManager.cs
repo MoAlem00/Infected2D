@@ -62,7 +62,7 @@ public class WaveManager : MonoBehaviour
         StartCoroutine(StartWave());
     }
 
-    private void HandleEnemyKilled()
+    private void HandleEnemyKilled(Vector3 position)
     {
         enemyKilled++;
         totalEnemiesKilled++;

@@ -5,6 +5,7 @@ public class AmmoBox : Item
 {
     private SpawnCollectibles ammoSpawner;
     [SerializeField] private int ammo = 30;
+    //private bool isPickedUp = false;
 
     private void Start()
     {
@@ -17,9 +18,23 @@ public class AmmoBox : Item
         AssaultRifle weapon = other.GetComponentInChildren<AssaultRifle>();
         if (weapon != null)
         {
-            if (weapon.IsFull) return;
+            if (weapon.IsFull)
+            {
+                canBePicked = false;
+                return;
+            }
             weapon.GiveAmmo(ammo);
             ammoSpawner.SpawnAmmoBox();
+            canBePicked = true;
         }
+    }
+
+    public override void OnSpawned()
+    {
+        canBePicked = true;
+    }
+
+    public override void OnDespawned()
+    {
     }
 }
