@@ -5,36 +5,22 @@ public class AmmoBox : Item
 {
     private SpawnCollectibles ammoSpawner;
     [SerializeField] private int ammo = 30;
-    //private bool isPickedUp = false;
 
     private void Start()
     {
         ammoSpawner = GameObject.Find("CollectiblesSpawner").GetComponent<SpawnCollectibles>();
     }
 
-
-    public override void PickUp(Collider2D other)
+    protected override bool CanCollect(Collider2D other)
     {
         AssaultRifle weapon = other.GetComponentInChildren<AssaultRifle>();
-        if (weapon != null)
-        {
-            if (weapon.IsFull)
-            {
-                canBePicked = false;
-                return;
-            }
-            weapon.GiveAmmo(ammo);
-            ammoSpawner.SpawnAmmoBox();
-            canBePicked = true;
-        }
+        if (weapon == null || weapon.IsFull ) return false;
+        return true;
     }
 
-    public override void OnSpawned()
+    protected override void PickUp(Collider2D other)
     {
-        canBePicked = true;
-    }
-
-    public override void OnDespawned()
-    {
+        other.GetComponentInChildren<AssaultRifle>().GiveAmmo(ammo);
+        ammoSpawner.SpawnAmmoBox();
     }
 }

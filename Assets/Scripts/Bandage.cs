@@ -11,28 +11,17 @@ public class Bandage : Item
         heartSpawner = GameObject.FindGameObjectWithTag("CollectiblesSpawner").GetComponent<SpawnCollectibles>();
     }
 
-    public override void PickUp(Collider2D other)
+    protected override bool CanCollect(Collider2D other)
     {
         HealthComponent health =  other.GetComponent<HealthComponent>();
-        if (health != null)
-        {
-            if (health.IsFull)
-            {
-                canBePicked = false;
-                return;
-            }
-            health.Heal(healAmount);
-            heartSpawner.SpawnHeals();
-            canBePicked = true;
-        }
+        if (health == null || health.IsFull) return false;
+        return true;
     }
 
-    public override void OnSpawned()
+    protected override void PickUp(Collider2D other)
     {
-        canBePicked = true;
-    }
-
-    public override void OnDespawned()
-    {
+        HealthComponent health =  other.GetComponent<HealthComponent>();
+        health.Heal(healAmount);
+        heartSpawner.SpawnHeals();
     }
 }
