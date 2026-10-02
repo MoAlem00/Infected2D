@@ -16,7 +16,8 @@ public class FlowField
             this.grid = grid;
             distances = new int[grid.Width, grid.Height];
             directions = new Vector2[grid.Width, grid.Height];
-            offsets = new[] { new Vector2Int(1,0), new Vector2Int(-1, 0), new Vector2Int(0, 1), new Vector2Int(0, -1),new Vector2Int(1,1),new Vector2Int(-1, 1),new Vector2Int(1, -1),new Vector2Int(-1, -1) };
+            offsets = new[]
+                { new Vector2Int(1, 0), new Vector2Int(-1, 0), new Vector2Int(0, 1), new Vector2Int(0, -1) };//,new Vector2Int(1,1),new Vector2Int(-1, 1),new Vector2Int(1, -1),new Vector2Int(-1, -1) };
             queue = new Queue<Cell>();
         }
 
@@ -51,9 +52,9 @@ public class FlowField
                 for (int y = 0; y < grid.Height; y++)
                 {
                     var cell = grid.GetCell(x, y);
-                    if(distances[x, y] == -1 || distances[x, y] == 0 ) continue;
+                    if(/*distances[x, y] == -1 || */distances[x, y] == 0 ) continue;
                     Cell best = null;
-                    int bestDistance = distances[x, y];
+                    int bestDistance = int.MaxValue;
                     foreach (var offset in offsets)
                     {
                         var neighbour = grid.GetCell(cell.GridX + offset.x, cell.GridY + offset.y);

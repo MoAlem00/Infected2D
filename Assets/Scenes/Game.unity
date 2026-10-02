@@ -124035,7 +124035,7 @@ GameObject:
   - component: {fileID: 686720514}
   - component: {fileID: 686720515}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: FlowFieldController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127836,6 +127836,7 @@ MonoBehaviour:
   enemyParent: {fileID: 746973685}
   axeParent: {fileID: 2132278377}
   initialPoolSize: 5
+  flowFieldController: {fileID: 686720515}
 --- !u!4 &969338708
 Transform:
   m_ObjectHideFlags: 0

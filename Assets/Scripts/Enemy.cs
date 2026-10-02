@@ -34,20 +34,25 @@ public class Enemy : PooledBehaviour
     [SerializeField] private AudioClip[] deathSounds;
     [SerializeField] private Transform[] patrolPoints;
     [SerializeField] private AudioClip throwAxeSound;
-    //[SerializeField] private GameObject coinPrefab;
+    private EnemyMovement movement;
     
     public static event Action<Vector3> OnEnemyDead;
     
     EnemyState state = EnemyState.Patrol;
-
+    
     private void Awake()
     {
+        movement = GetComponent<EnemyMovement>();
         enemyCollider =  GetComponent<Collider2D>();
         audioSource = GetComponent<AudioSource>();
         spawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
         health = GetComponent<HealthComponent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         anim = GetComponent<Animator>();
+    }
+    public void Initialize(FlowFieldController flowFieldController)
+    {
+        movement.SetFlowField(flowFieldController);
     }
 
     // Update is called once per frame
@@ -77,7 +82,7 @@ public class Enemy : PooledBehaviour
                 ResetAnimations();
                 SetAnimationsToChase();
                 //Move enemy towards the player
-                transform.position = Vector3.MoveTowards(transform.position, player.position, chaseSpeed * Time.deltaTime);
+                movement.ChasePlayer(chaseSpeed);
                 //shoot if player inside attack range and cooldown is ready
                 if (distanceToPlayer <= attackRadius && Time.time >= nextFireTime)
                 {
@@ -87,6 +92,7 @@ public class Enemy : PooledBehaviour
                 }
                 break;
             case EnemyState.Patrol:
+                movement.Stop();
                 Patrol();
                 break;
         }
@@ -96,13 +102,12 @@ public class Enemy : PooledBehaviour
     {
         OnEnemyDead?.Invoke(transform.position);
         enemyCollider.enabled = false;
-        //GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
-        //Destroy(coin, 10f);
         int i  = Random.Range(0, deathSounds.Length);
         SoundsManager.Instance.PlaySFX(deathSounds[i],0.7f);//play random death sound
         audioSource.Stop();//stop zombie sounds
         anim.SetTrigger("isDead");//death animation
         hasDied = true;
+        movement.Stop();
         yield return new WaitForSeconds(2f);
         Despawn();
     }

@@ -17,6 +17,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform enemyParent;
     [SerializeField] private Transform axeParent;
     [SerializeField] private int initialPoolSize = 20;
+    [SerializeField] private FlowFieldController flowFieldController;
     
     public ObjectPooler<Axe> AxePooler => axePooler;
     
@@ -38,7 +39,8 @@ public class EnemySpawner : MonoBehaviour
             AudioSource.PlayClipAtPoint(portalSound,currentPos,0.5f);//playing portal sound
             GameObject portal = Instantiate(portalEffect, currentPos, Quaternion.Euler(0f, 0f, 90f));//spawn portal at the given spawn point
             yield return new WaitForSeconds(0.3f);
-            enemyPooler.GetPooledObject(currentPos,Quaternion.Euler(0f, 0f, 0f));
+            Enemy enemy = enemyPooler.GetPooledObject(currentPos,Quaternion.Euler(0f, 0f, 0f));
+            enemy.Initialize(flowFieldController);
             Destroy(portal, 1f);//destroy the portal
             yield return new WaitForSeconds(delay);
         }

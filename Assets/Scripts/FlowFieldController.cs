@@ -13,6 +13,7 @@ public class FlowFieldController : MonoBehaviour
     void Start()
     {
         flowField = new FlowField(pathGrid);
+        if (pathGrid == null) pathGrid = gameObject.GetComponent<PathGrid>();
     }
 
    
@@ -24,7 +25,12 @@ public class FlowFieldController : MonoBehaviour
         lastPlayerCell = currentPlayerCell;
         flowField.Calculate(currentPlayerCell);
     }
-
+    public Vector2 GetDirection(Vector2 worldPosition)
+    {
+        if(flowField == null) return Vector2.zero;
+        Cell cell = pathGrid.GetCellFromWorld(worldPosition);
+        return flowField.GetDirection(cell);
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.black;
