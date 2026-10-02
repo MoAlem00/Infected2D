@@ -9,7 +9,8 @@ public class PathGrid : MonoBehaviour
     [SerializeField] private LayerMask unwalkableLayers;
     private Cell[,] cells;
     private Vector3Int origin;
-    private int width, height;
+    public int Width {get; private set;}
+    public int Height {get; private set;}
 
     private void Awake()
     {
@@ -20,13 +21,13 @@ public class PathGrid : MonoBehaviour
     {
         groundTilemap.CompressBounds();
         origin = new Vector3Int(groundTilemap.cellBounds.xMin, groundTilemap.cellBounds.yMin, 0);
-        width = groundTilemap.cellBounds.size.x;
-        height = groundTilemap.cellBounds.size.y;
-        cells = new Cell[width, height];
+        Width = groundTilemap.cellBounds.size.x;
+        Height = groundTilemap.cellBounds.size.y;
+        cells = new Cell[Width, Height];
         Vector2 cellCheckSize = groundTilemap.cellSize * 0.8f;
-        for (int x = 0; x < width; x++)
+        for (int x = 0; x < Width; x++)
         {
-            for (int y = 0; y < height; y++)
+            for (int y = 0; y < Height; y++)
             {
                 Vector3Int tileCoords = new Vector3Int(x + origin.x, y + origin.y);
                 Vector2 cellCenter = groundTilemap.GetCellCenterWorld(tileCoords);
@@ -52,7 +53,7 @@ public class PathGrid : MonoBehaviour
 
     private bool InsideBounds(int x, int y)
     {
-        return x < 0 || x >= width || y < 0 || y >= height;
+        return x >= 0 && x < Width && y >= 0 && y < Height;
     }
 
     private void OnDrawGizmos()
