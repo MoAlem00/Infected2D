@@ -167,6 +167,7 @@ public class Enemy : PooledBehaviour
 
     public override void OnSpawned()
     {
+        movement.Stop();
         hasDied = false;
         enemyCollider.enabled = true;
         health.ResetHealth();

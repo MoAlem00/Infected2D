@@ -122566,7 +122566,7 @@ MonoBehaviour:
   - {fileID: 6049285697312808078, guid: 01abd95f048c32949a427abdda8b91ee, type: 3}
   ammoBox: {fileID: 2685238301468468239, guid: 3183d5ab1bd13bd439225fbfb0120f62, type: 3}
   bandage: {fileID: -2430060280966207024, guid: b60448c41ae7f1b47adbd61875866eed, type: 3}
-  initialPoolSize: 5
+  initialPoolSize: 15
 --- !u!4 &592154200
 Transform:
   m_ObjectHideFlags: 0

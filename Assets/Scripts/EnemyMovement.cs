@@ -18,7 +18,10 @@ public class EnemyMovement : MonoBehaviour
     {
         if(navigator == null) return;
         if (!isChasing) return;
-        Direction = navigator.GetDirection(rb.position);
+        Vector2 target = navigator.GetTargetPosition(rb.position);
+        Vector2 toTarget = target - rb.position;
+        if (toTarget.sqrMagnitude <= 0.01f) Direction = Vector2.zero;
+        else Direction = toTarget.normalized;
         rb.linearVelocity =  Direction * speed;
     }
 

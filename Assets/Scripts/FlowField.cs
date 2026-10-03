@@ -8,6 +8,7 @@ public class FlowField
         private readonly int[,] distances;
         private readonly Vector2[,] directions;
         private readonly Vector2Int[] offsets;
+        private readonly Cell[,] nextCells;
         private readonly Queue<Cell> queue;
 
         
@@ -16,8 +17,9 @@ public class FlowField
             this.grid = grid;
             distances = new int[grid.Width, grid.Height];
             directions = new Vector2[grid.Width, grid.Height];
+            nextCells = new Cell[grid.Width, grid.Height];
             offsets = new[]
-                { new Vector2Int(1, 0), new Vector2Int(-1, 0), new Vector2Int(0, 1), new Vector2Int(0, -1) };//,new Vector2Int(1,1),new Vector2Int(-1, 1),new Vector2Int(1, -1),new Vector2Int(-1, -1) };
+                { new Vector2Int(1, 0), new Vector2Int(-1, 0), new Vector2Int(0, 1), new Vector2Int(0, -1),new Vector2Int(1,1),new Vector2Int(-1, 1),new Vector2Int(1, -1),new Vector2Int(-1, -1) };
             queue = new Queue<Cell>();
         }
 
@@ -30,6 +32,7 @@ public class FlowField
                 {
                     distances[x, y] = -1;
                     directions[x, y] = Vector2.zero;
+                    nextCells[x, y] = null;
                 }
             }
             distances[targetCell.GridX,targetCell.GridY] = 0;
@@ -52,7 +55,7 @@ public class FlowField
                 for (int y = 0; y < grid.Height; y++)
                 {
                     var cell = grid.GetCell(x, y);
-                    if(/*distances[x, y] == -1 || */distances[x, y] == 0 ) continue;
+                    if(distances[x, y] == 0 ) continue;
                     Cell best = null;
                     int bestDistance = int.MaxValue;
                     foreach (var offset in offsets)
@@ -63,14 +66,24 @@ public class FlowField
                         if(!neighbour.IsWalkable) continue;
                         if (distances[neighbour.GridX, neighbour.GridY] < bestDistance)
                         {
-                            best =  neighbour;
+                            best = neighbour;
                             bestDistance = distances[neighbour.GridX, neighbour.GridY];
                         }
                     }
-                    if(best != null)
+
+                    if (best != null)
+                    {
                         directions[x, y] = (best.WorldPosition - cell.WorldPosition).normalized;
+                        nextCells[x, y] = best;
+                    }
                 }
             }
+        }
+
+        public Cell GetNextCell(Cell cell)
+        {
+            if(cell == null) return null;
+            return nextCells[cell.GridX, cell.GridY];
         }
         
         public Vector2 GetDirection(Cell cell)

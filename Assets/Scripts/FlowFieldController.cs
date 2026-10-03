@@ -31,7 +31,19 @@ public class FlowFieldController : MonoBehaviour
         Cell cell = pathGrid.GetCellFromWorld(worldPosition);
         return flowField.GetDirection(cell);
     }
-    private void OnDrawGizmos()
+
+    public Vector2 GetTargetPosition(Vector2 worldPosition)
+    {
+        if (flowField == null) return worldPosition;
+        Cell cell = pathGrid.GetCellFromWorld(worldPosition);
+        if (cell == null) return worldPosition;
+        if(cell == lastPlayerCell) return player.position;
+        Cell nextCell = flowField.GetNextCell(cell);
+        if(nextCell == null) return worldPosition;
+        return nextCell.WorldPosition;
+    }
+    
+    /*private void OnDrawGizmos()
     {
         Gizmos.color = Color.black;
         if(flowField == null) return;
@@ -48,5 +60,5 @@ public class FlowFieldController : MonoBehaviour
                 Gizmos.DrawSphere(endPoint, 0.05f);
             }
         }
-    }
+    }*/
 }

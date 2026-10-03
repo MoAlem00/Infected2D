@@ -14,11 +14,11 @@ public class SpawnCollectibles : MonoBehaviour
     [SerializeField] private GameObject[] barrels;
     [SerializeField] private AmmoBox ammoBox;
     [SerializeField] private Bandage bandage;
-    [SerializeField] private int initialPoolSize = 5;
+    [SerializeField] private int initialPoolSize = 15;
     private ObjectPooler<AmmoBox> ammoBoxPooler;
     private ObjectPooler<Bandage> bandagePooler;
     
-    private int boxesAtStart = 3;
+    private int boxesAtStart = 10;
     private int barrelsAmount = 10;
     private Vector3 spawnPosition;
     //map borders so it dont spawn outside the map

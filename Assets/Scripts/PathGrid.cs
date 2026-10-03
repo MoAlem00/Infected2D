@@ -56,7 +56,7 @@ public class PathGrid : MonoBehaviour
         return x >= 0 && x < Width && y >= 0 && y < Height;
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         if (cells == null) return;
         foreach (var cell in cells)
@@ -66,5 +66,5 @@ public class PathGrid : MonoBehaviour
             Gizmos.DrawCube(cell.WorldPosition, Vector3.one);
         }
         
-    }
+    }*/
 }
